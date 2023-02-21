@@ -1,15 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Hello World from Darien Ghee! I am Adding my first code change'
+    return 'Hello World from Darien Ghee!'
 
-@app.route('/hello')
-def hello():
-    return render_template('hello.html')
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/about')
 def about():
