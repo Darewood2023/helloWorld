@@ -12,19 +12,19 @@
         {# If statement to decide what to display on the page #}
         {% if form_submitted %}
             {# Shows content based on what the person answered #}
-            <h2>Thank You for Contacting Us!</h2><br>
+            <h2>Thank You for Contacting Us!</h2>
 
             <p>First Name: </p>
-            <p>{{request.form.get('firstname')}} <br><br></p>
+            <p>{{request.form.get('firstname')}}</p><br>
 
             <p>Last Name: </p>
-            <p>{{request.form.get('lastname')}} <br><br></p>
+            <p>{{request.form.get('lastname')}}</p><br>
 
             <p>Email: </p>
-            <p> {{request.form.get('email')}} <br><br></p>
+            <p> {{request.form.get('email')}}</p><br>
 
             <p>Anime: </p>
-            <p>{{request.form.get('anime')}} <br><br></p>
+            <p>{{request.form.get('anime')}}</p><br>
 
             <p>Agree to be Contacted? :</p>
             <p>{{ 'Yes' if request.form.get('agree_check') else 'No' }}</p>
@@ -35,28 +35,32 @@
             {# Displays the form to be answered #}
         <h2>Please Input You Information to Contact Us</h2><br>
 
-            <form action="{{ url_for('contact')}}" method="post">
-              <div class="col-4">
+            <form class="row g-3" action="{{ url_for('contact')}}" method="post">
+              <div class="col-md-4">
                 <label for="firstname" class="form-label">First Name</label>
                 <input type="text" class="form-control" id="firstname" name="firstname"><br>
               </div>
-              <div class="col-4">
+              <div class="col-md-4">
                 <label for="lastname" class="form-label">Last Name</label>
                 <input type="text" class="form-control" id="firstname" name="lastname"><br>
               </div>
-              <div class="col-4">
+              <div class="col-10">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="email"><br>
               </div>
-              <div class="col-6">
+              <div class="col-10">
                 <label for="anime" class="form-label">Favorite Anime</label>
-                <input type="text" class="form-control" id="anime" name="anime"><br><br>
+                <input type="text" class="form-control" id="anime" name="anime"><br>
               </div>
-                <div class="col-6 form-check">
-                    <input type="checkbox" class="form-check-input" id="agree_check" name="agree_check">
-                    <label class="form-check-label" for="agree_check">Check me out</label>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="agree_check" name="agree_check">
+                        <label class="form-check-label" for="agree_check">I agree to be contacted</label>
+                    </div><br>
                 </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         {%  endif %}
 
