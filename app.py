@@ -19,5 +19,13 @@ def about():
 def favoritecourse():
     return render_template('favorite-course.html')
 
+@app.route('/contact', methods=['GET','POST'])
+def contact():
+
+    if request.method == 'GET':
+        return render_template('contact.html',form_submitted=True)
+    else:
+        return render_template('contact.html')
+
 if __name__ == '__main__':
     app.run()
