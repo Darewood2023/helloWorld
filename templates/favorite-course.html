@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Favorite Courses</title>
-</head>
- <body>
-        <h1>Hello</h1>
-        <h2>What Is Your Favorite Course</h2>
-<!-- Displays the favorite course arguments entered-->
-        <p>Name: Darien Ghee</p>
+{%  extends "base.html" %}
 
-        <p>You entered your favorite courses as: </p>
-            {{'Favorite Subject: ' + request.args.get('subject')}} <br><br>
-            {{'Favorite Course: ' + request.args.get('course')}}
+{% block page_title %} Favorite Courses {% endblock %}
 
-    </body>
-</html>
+    {% block page_head %} Hello {% endblock %}
+
+    {% block page_content %}
+
+        <h2>What Is Your Favorite Course?</h2>
+            <br>
+
+
+        <!-- Displays the favorite course arguments entered-->
+        <div class="col-6">
+            <fieldset class="border p-2">
+                <p><strong>Name: </strong> Darien Ghee</p>
+                <br>
+                <p>You entered your favorite course as: </p>
+                    {{'Favorite Subject: ' + request.args.get('subject')}} <br>
+                    {{'Favorite Course: ' + request.args.get('course')}}
+            </fieldset>
+        </div>
+    {% endblock %}
