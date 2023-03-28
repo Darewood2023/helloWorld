@@ -11,34 +11,48 @@
 
         {% if form_submitted %}
             <h2>Thank You for Contacting Us!</h2><br>
-                {{'First Name: ' + request.args.post('firstname')}} <br><br>
 
-                {{'last Name: ' + request.args.post('lastname')}} <br><br>
+            <p>First Name: </p>
+            <p>{{request.form.get('firstname')}} <br><br></p>
 
-                {{'Email: ' + request.args.post('email')}} <br><br>
+            <p>Last Name: </p>
+            <p>{{request.form.get('lastname')}} <br><br></p>
 
-                {{'Favorite Anime: ' + request.args.post('anime')}} <br><br>
+            <p>Email: </p>
+            <p> {{request.form.get('email')}} <br><br></p>
+
+            <p>Anime: </p>
+            <p>{{request.form.get('anime')}} <br><br></p>
+
+            <p>Agree to be Contacted? :</p>
+            <p>{{ 'Yes' if request.form.get('agree_check') else 'No' }}</p>
+
+            <p><a href="{{ url_for('contact') }}">Complete Form Again</a></p>
 
         {% else %}
         <h2>Please Input You Information to Contact Us</h2><br>
 
-            <form action="{{ url_for('contact')}}" method="get">
+            <form action="{{ url_for('contact')}}" method="post">
               <div class="col-4">
                 <label for="firstname" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstname"><br>
+                <input type="text" class="form-control" id="firstname" name="firstname"><br>
               </div>
               <div class="col-4">
                 <label for="lastname" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="firstname"><br>
+                <input type="text" class="form-control" id="firstname" name="lastname"><br>
               </div>
               <div class="col-4">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="exampleInputEmail1"><br>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="email"><br>
               </div>
               <div class="col-6">
                 <label for="anime" class="form-label">Favorite Anime</label>
-                <input type="text" class="form-control" id="anime"><br>
+                <input type="text" class="form-control" id="anime" name="anime"><br><br>
               </div>
+                <div class="col-6 form-check">
+                    <input type="checkbox" class="form-check-input" id="agree_check" name="agree_check">
+                    <label class="form-check-label" for="agree_check">Check me out</label>
+                </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         {%  endif %}
