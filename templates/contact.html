@@ -9,7 +9,9 @@
     <body>
         <h1>Contact Us!</h1><br>
 
+        {# If statement to decide what to display on the page #}
         {% if form_submitted %}
+            {# Shows content based on what the person answered #}
             <h2>Thank You for Contacting Us!</h2><br>
 
             <p>First Name: </p>
@@ -30,6 +32,7 @@
             <p><a href="{{ url_for('contact') }}">Complete Form Again</a></p>
 
         {% else %}
+            {# Displays the form to be answered #}
         <h2>Please Input You Information to Contact Us</h2><br>
 
             <form action="{{ url_for('contact')}}" method="post">
